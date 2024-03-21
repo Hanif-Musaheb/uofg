@@ -310,15 +310,70 @@
 
 ; CmdDelete:
 
-; *** EXERCISE Insert low level algorithm for delete here ***
+; <CmdDelete>
+; Delete first node whose value is x; p is header
+;    q := (*p).next
+;    while q /= nil
+;       if (*q).value = x
+;          then *p.next := *q.next
+;               ReleaseNode(q)
+;               q := nil
+;          else p := q
+;               q := (*q).next
+
+
+;	q := (*p).next
+;	CmdDeleteWhile:
+;	if q == nil then goto breakWhile
+;		if (*q).value /= x then goto ValueFalse
+;          ValueTrue:
+;			 *p.next := *q.next
+;               ReleaseNode(q)
+;               q := nil
+;			  goto CmdDeleteWhile
+;		  ValueFalse:
+;         	  p := q
+;               q := (*q).next
+;	goto CmdDeleteWhile
+;	breakWhile:
+
+
 
 ; CmdSearch:
 
-; *** EXERCISE Insert low level algorithm for CmdSearch here ***
+; <CmdSearch>
+;    found := False
+;    p := *p.next    ; point to first element of list
+;	CmdSearchPrint:
+;    if p = nil || found then goto whileBreak
+;       if (*p).value = x
+;         then found := 1
+;       p := (*p).next
+;	goto CmdSearchPrint
 
-; CmdPrint:
+;    if found then goto TrueFound else goto NotFound
+;      TrueFound:
+;		 write "Found"
+;		 goto AfterIf
+;      NotFound:
+;		 write "Not Found"
+;	AfterIf:
 
-; *** EXERCISE Insert low level algorithm for CmdPrint here ***
+
+
+
+; CmdPrint: 
+; 	p := *p.next  
+;	p /= nil
+;    whileCmdPrint:
+;	if p == nil then goto whileBreak
+;	WriteValIntFixedWidth ((*p).value)
+;	p := (*p).next
+;	goto whileCmdPrint
+;	whileBreak
+
+
+
 
 ;--------------------------------------------------------------------
 ; procedure BuildHeap ()
